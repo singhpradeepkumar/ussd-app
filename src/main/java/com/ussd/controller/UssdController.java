@@ -9,13 +9,8 @@ public class UssdController {
 	
 	@RequestMapping(produces="text/plain")
 	public String processRequest(@RequestParam String sessionId, @RequestParam String serviceCode, @RequestParam String phoneNumber, @RequestParam String text)  {
-		// Reads the variables sent via POST from our gateway
-		/*
-		 * String sessionId = request.getParameter("sessionId"); String serviceCode =
-		 * request.getParameter("serviceCode"); String phoneNumber =
-		 * request.getParameter("phoneNumber"); String text =
-		 * request.getParameter("text");
-		 */
+		UssdConfig.configure();
+		AfricasTalking.getService(AfricasTalking.SERVICE_USSD);
 
 		StringBuilder strResponse = new StringBuilder();
 		if ("".equals(text)) {
